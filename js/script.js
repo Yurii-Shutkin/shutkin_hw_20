@@ -94,7 +94,7 @@ console.log('');
 
 
 
-// // findIndex
+// findIndex
 const findIndexEmul = function(array, callback) {
 
     for(i = 0; i < array.length; i++) {
