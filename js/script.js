@@ -2,17 +2,17 @@
 const arr = [2, 5, 9];
 
 const indexOfEmul = function(array, item, from = 0) {
-
-    for(let i = from; i < array.length; i++) {
-
-        if(from < 0) {
-            i = from + array.length;
-        }
+    
+    if (from < 0) {
+        from += array.length;
+    }
+    
+    for(let i = from; i <= array.length - 1; i++) {
 
         if(item === array[i]) return i;
     }
-
-    return -1;
+    
+    return -1; 
 }
 
 console.log('indexOf');
@@ -39,13 +39,9 @@ const arr2 = [2, 5, 9, 2];
 const lastIndexOfEmul = function(array, item, from = array.length - 1) {
 
     if(from < 0) {
-        
-        for(i = array.length + from; i >= 0; i--) {
-
-            if(item === array[i]) return i;
-        }
+        from += array.length;
     }
-    
+           
     for(let i = from; i >= 0; i--) {
 
         if(item === array[i]) return i;
@@ -53,6 +49,7 @@ const lastIndexOfEmul = function(array, item, from = array.length - 1) {
 
     return -1;
 }
+
 
 console.log('lastIndexOf');
 
@@ -82,8 +79,6 @@ const findEmul = function(array, callback) {
         
         if(callback(array[i], i, array)) return array[i];
     }
-
-    return undefined;
 }
 
 const cb = item => item === 'Yurii';
@@ -177,15 +172,3 @@ const isBiggerThat10 = item => item > 10;
 
 console.log('some');
 console.log(someEmul(arr5, isBiggerThat10));
-
-
-
-// Хотел упростить ф-цию indexOf до такого вида: 
-
-// const indexOf = function(array, elem, fromIndex = 0) {
-//     for(let i = fromIndex; i <= array.length - 1; i++) {
-//         return elem === array[i] ? i : -1;
-//     }
-// }
-
-// Я честно говоря не очень понимаю почему такой вариант не работает
